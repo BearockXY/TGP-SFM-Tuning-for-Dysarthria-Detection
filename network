@@ -1,0 +1,69 @@
+Wav2Vec2Classifier(
+  (wav2vec2): _Wav2Vec2Model(
+    (model): Wav2Vec2Model(
+      (feature_extractor): FeatureExtractor(
+        (conv_layers): ModuleList(
+          (0): ConvLayerBlock(
+            (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (conv): Conv1d(1, 512, kernel_size=(10,), stride=(5,), bias=False)
+          )
+          (1-4): 4 x ConvLayerBlock(
+            (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(3,), stride=(2,), bias=False)
+          )
+          (5-6): 2 x ConvLayerBlock(
+            (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(2,), stride=(2,), bias=False)
+          )
+        )
+      )
+
+      (encoder): Encoder(
+        (feature_projection): FeatureProjection(
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (projection): Linear(in_features=512, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+        (transformer): Transformer(
+          (pos_conv_embed): ConvolutionalPositionalEmbedding(
+            (conv): ParametrizedConv1d(
+              1024, 1024, kernel_size=(128,), stride=(1,), padding=(64,), groups=16
+              (parametrizations): ModuleDict(
+                (weight): ParametrizationList(
+                  (0): _WeightNorm()
+                )
+              )
+            )
+          )
+          (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (layers): ModuleList(
+            (0-23): 24 x EncoderLayer(
+              (attention): SelfAttention(
+                (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+              )
+              (dropout): Dropout(p=0.0, inplace=False)
+              (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              (feed_forward): FeedForward(
+                (intermediate_dense): Linear(in_features=1024, out_features=4096, bias=True)
+                (intermediate_dropout): Dropout(p=0.0, inplace=False)
+                (output_dense): Linear(in_features=4096, out_features=1024, bias=True)
+                (output_dropout): Dropout(p=0.0, inplace=False)
+              )
+              (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            )
+          )
+        )
+      )
+      
+    )
+  )
+  (classifier): Sequential(
+    (0): Linear(in_features=1024, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
