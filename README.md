@@ -1,0 +1,1 @@
+# Use-TGP-for-tuning-Speech-Fundation-Model-for-Dyasarthria-Speech-Detection
