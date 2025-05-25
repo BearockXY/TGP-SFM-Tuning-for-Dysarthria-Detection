@@ -5,5 +5,6 @@ It is all the Python scripts used to run experiments for the paper. It is recomm
 
 Dataset: We would like to clarify that the speech data used in our study was initially collected as far back as the 1990s. At the time, the consent forms signed by participants did not include provisions for public data sharing. More recently, however, the consent process has been updated to explicitly allow for such use. Before we can release any data, we need to ensure that we only include samples from participants who provided consent under the revised terms.
 
-The model is too large to be included. Please feel free to mail the author for the pre-trained models if needed. 
+The model is too large to be included. Please use the shared link to download it via the link:https://www.dropbox.com/scl/fo/mlxbobrvmoxx99d7kk2rf/AHO_MKwGO8TQVZYrFkbXXlY?rlkey=pg8wjqxy47lwi4t057ktft4uq&st=ziaz3baj&dl=0.
+
 Contact mail: yxiong35@asu.edu.
